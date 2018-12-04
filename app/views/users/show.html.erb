@@ -1,0 +1,14 @@
+<h2 align="center"> <%= @user.username %>'s comments </h2>
+
+<div class="center">
+    <%= will_paginate @user_comments %>
+</div>
+
+<%= render "shared/comment", obj: @user.comments %>
+
+<div class="center">
+    <%= will_paginate @user_comments %>
+</div>
+
+
+

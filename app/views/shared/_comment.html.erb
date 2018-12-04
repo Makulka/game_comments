@@ -1,0 +1,32 @@
+<% obj.each do |comment| %>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="well well-lg">
+                <div class="title">
+                    <%= link_to comment.title, comment_path(comment) %>
+                </div>
+                <div class="body">
+                    <%= truncate(comment.description, length: 100) %>
+                    <div class="details">
+                        <small>
+                            Created by: <%= comment.user.username %>,
+                            <%= time_ago_in_words(comment.created_at) %> ago,
+                            last updated: <%= time_ago_in_words(comment.updated_at) %> ago
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                     <% if logged_in? && (current_user == comment.user || current_user.admin?) %>
+                        <%= link_to "Edit", edit_comment_path(comment), class: "btn btn-xs btn-primary" %>
+                        <%= link_to "Delete", comment_path(comment), method: :delete,
+                        data: { confirm: "Are you sure you want to delete the comment?"},
+                        class: "btn btn-xs btn-danger" %>
+                    <% end %>
+                    <%= link_to "View", comment_path(comment), class: "btn btn-xs btn-success" %>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+<% end %>
