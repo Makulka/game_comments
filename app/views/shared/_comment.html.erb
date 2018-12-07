@@ -16,6 +16,10 @@
                     </div>
                 </div>
                 
+                <% if comment.categories.any? %>
+                    <p>Categories: <%= render comment.categories %></p>
+                <% end %>
+                
                 <div class="actions">
                      <% if logged_in? && (current_user == comment.user || current_user.admin?) %>
                         <%= link_to "Edit", edit_comment_path(comment), class: "btn btn-xs btn-primary" %>

@@ -1,0 +1,17 @@
+<h1 class="center"> Category: <%= @category.name %></h1>
+
+<div align="center">
+    <% if logged_in? and current_user.admin? %>
+        <div class="row">
+            <span class="badge"><%= link_to "Edit Category Name", edit_category_path(@category) %></span>
+        </div>
+    <% end %>
+    
+    <%= will_paginate @category_comments%>
+</div>
+
+<%= render "shared/comment", obj: @category_comments %>
+
+<div align="center">
+    <%= will_paginate @category_comments%>
+</div>

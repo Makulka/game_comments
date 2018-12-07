@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
     
     
     def comment_params
-        params.require(:comment).permit(:title, :description)
+        params.require(:comment).permit(:title, :description, category_ids: [])
     end
     
     def find_comment
