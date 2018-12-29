@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     before_action :check_same_user_or_admin, only: [:edit, :update, :destroy]
     
     def index
-        @comments = Comment.paginate(page: params[:page], per_page: 3)
+        @comments = Comment.paginate(page: params[:page], per_page: 5)
     end
     
     def show

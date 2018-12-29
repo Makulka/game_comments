@@ -1,8 +1,32 @@
-<div class="center jumbotron">
-  <h2>Wellcome to the comment section of Learning Games</h2>
-  <h3>Please log in or sign up to add a new comment</h3>
-  <%= link_to "Sign up", signup_path, class: "btn btn-danger btn-lg btn-xlarge" %>
-  <%= link_to "Log in", login_path, class: "btn btn-success btn-lg btn-xlarge" %>
-  <%= link_to "View all comments", comments_path, class: "btn btn-primary btn-lg btn-xlarge" %>
-   <%= link_to "Return to Learning Games", "http://herebegregs.uk/stana/learningGames/index.html", class: "btn btn-danger btn-lg btn-xlarge" %>
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="center jumbotron">
+      <h2>Wellcome to the comment section of Learning Games</h2>
+      <% if !logged_in? %>
+          <h3>Please log in or sign up to add a new comment</h3>
+          
+          <div>
+              <ul class="home-button-list">
+                  <%= link_to "Sign up", signup_path, class: "button green" %>
+                  <%= link_to "Log in", login_path, class: "button pink" %>
+                  <%= link_to "View all comments", comments_path, class: "button purple" %>
+                  <%= link_to "Return to Learning Games", "http://herebegregs.uk/stana/learningGames/index.html", class: "button orange" %>
+              </ul>
+          </div>
+      <% else %>
+           <div>
+              <ul class="home-button-list">
+                  <%= link_to "Create a new comment", new_comment_path, class: "button green" %>
+                  <%= link_to "View all comments", comments_path, class: "button purple" %>
+                  <%= link_to "Return to Learning Games", "http://herebegregs.uk/stana/learningGames/index.html", class: "button orange" %>
+              </ul>
+          </div>
+      <% end %>
+    </div>
+  </div>
 </div>
+
+
+
+

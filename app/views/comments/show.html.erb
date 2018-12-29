@@ -1,4 +1,4 @@
-<h2 align="center">Title: <%= @comment.title %></h2>
+<h2 align="center">Title: <%= @comment.title.capitalize %></h2>
 
 <div class="well col-xs-8 col-xs-offset-2">
     
@@ -10,7 +10,11 @@
                     Created by: 
                 </li>
                 <li class="title">
-                    <%= link_to @comment.user.username, user_path(@comment.user) %>
+                    <% if current_user == @comment.user %>
+                        <%= link_to "you", user_path(@comment.user) %>
+                    <% else %>
+                        <%= link_to @comment.user.username, user_path(@comment.user) %>
+                    <% end %>
                 </li>
                 <li><small>
                     <%= pluralize(@comment.user.comments.count, "comment") if @comment.user.comments %>
@@ -30,11 +34,12 @@
     
     <div class="actions">
          <% if logged_in? && (current_user == @comment.user || current_user.admin?) %>
-            <%= link_to "Edit", edit_comment_path(@comment), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Edit", edit_comment_path(@comment), class: "btn btn-xs orange" %>
             <%= link_to "Delete", comment_path(@comment), method: :delete,
-            data: { confirm: "Are you sure you want to delete the comment?"},
-            class: "btn btn-xs btn-danger" %>
+                data: { confirm: "Are you sure you want to delete the comment?"},
+                class: "btn btn-xs red" %>
         <% end %>
+        <%= link_to "All comments", comments_path, class: "btn btn-xs green" %>
     </div>
    
 </div>

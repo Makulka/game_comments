@@ -1,21 +1,31 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
   <head>
     <title>GameComments</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    
+    
+    
     <%= render "shared/navbar" %>
+   
     <%= render "shared/messages" %>
     
-     <div class="container">
-      <%= yield %>
-    </div>
+    <main>
+      
+      <div class="container">
+        <%= image_tag "DNAlogo.png", id: "image-top" %> 
+        <%= yield %>
+      </div>
+    </main>
+    
     
     <%= render "shared/footer" %>
   </body>
