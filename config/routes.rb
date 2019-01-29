@@ -10,8 +10,14 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
   
-  resources :comments
+  resources :comments do
+    member do
+  		post "like", to: "comments#upvote"
+  	end
+  end
   
   resources :categories, except: [:destroy]
 
 end
+
+

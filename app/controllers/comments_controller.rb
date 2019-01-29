@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController 
-    before_action :find_comment, only: [:show, :edit, :update, :destroy]
+    before_action :find_comment, only: [:show, :edit, :update, :destroy, :upvote]
     before_action :require_user, except: [:index, :show]
     before_action :check_same_user_or_admin, only: [:edit, :update, :destroy]
     
@@ -41,6 +41,12 @@ class CommentsController < ApplicationController
         @comment.destroy
         flash[:danger] = "your comment was deleted"
         redirect_to comments_path
+    end
+    
+    def upvote
+        @comment.upvote_by current_user
+        redirect_back fallback_location: root_path
+        #redirect_to comments_path
     end
     
     

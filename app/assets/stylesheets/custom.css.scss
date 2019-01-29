@@ -201,5 +201,11 @@ main {
      border-radius: 10px;
 }
 
+@media (max-width: 767px) {
+    footer {
+        height: 46px;
+    }
+}
+
 
 

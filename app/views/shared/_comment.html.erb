@@ -25,11 +25,17 @@
                 <% end %>
                 
                 <div class="actions">
-                     <% if logged_in? && (current_user == comment.user || current_user.admin?) %>
-                        <%= link_to "Edit", edit_comment_path(comment), class: "btn btn-xs orange" %>
-                        <%= link_to "Delete", comment_path(comment), method: :delete,
-                        data: { confirm: "Are you sure you want to delete the comment?"},
-                        class: "btn btn-xs red" %>
+                    <% if logged_in? %>
+                        <%= link_to like_comment_path(comment), method: :post, class: "btn btn-defaultS" do %>
+                            <span class="glyphicon glyphicon-thumbs-up"></span>
+                            <%= comment.get_upvotes.size %>
+                        <% end %>
+                        <% if logged_in? && (current_user == comment.user || current_user.admin?) %>
+                            <%= link_to "Edit", edit_comment_path(comment), class: "btn btn-xs orange" %>
+                            <%= link_to "Delete", comment_path(comment), method: :delete,
+                            data: { confirm: "Are you sure you want to delete the comment?"},
+                            class: "btn btn-xs red" %>
+                        <% end %>
                     <% end %>
                     <%= link_to "View", comment_path(comment), class: "btn btn-xs green" %>
                 </div>
