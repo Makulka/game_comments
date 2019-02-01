@@ -1,18 +1,26 @@
 <h1 align="center">All Categories</h1>
 
-<div align="center">
-    <%= will_paginate %>
-        <% @categories.each do |category| %>
-            <ul class="listing">
-                <div class="row">
-                    <div class="well col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
-                        <li class="title">
-                        <%= link_to "#{category.name}", category_path(category) %>
-                        </li>
-                        <li><small><%= pluralize(category.comments.count, "comment") %></small></li>
+<div class="image-div">
+
+    <div><%= image_tag "hedgehog.png"%></div>
+    
+    <div align="center">
+        <%= will_paginate %>
+            <% @categories.each do |category| %>
+                <ul class="listing">
+                    <div class="row">
+                        <div class="well">
+                            <li class="title">
+                            <%= link_to "#{category.name}", category_path(category) %>
+                            </li>
+                            <li><small><%= pluralize(category.comments.count, "comment") %></small></li>
+                        </div>
                     </div>
-                </div>
-            </ul>
-        <% end %>
-    <%= will_paginate %>
+                </ul>
+            <% end %>
+        <%= will_paginate %>
+    </div>
+    
+    <div><%= image_tag "squirrel.png"%></div>
+
 </div>
