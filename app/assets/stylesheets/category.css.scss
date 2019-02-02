@@ -1,0 +1,13 @@
+.well.category-list {
+    margin-bottom: 10px;
+    &:first-of-type {
+        margin-top:10px;
+    }
+    .title {
+        display: flex;
+        flex-direction: column;
+        span {
+            font-weight: 300;
+        }
+    }
+}

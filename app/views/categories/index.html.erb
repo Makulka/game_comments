@@ -2,22 +2,22 @@
 
 <div class="image-div">
 
-    <div><%= image_tag "hedgehog.png"%></div>
+    <div><%= image_tag "hedgehog2.png"%></div>
     
     <div align="center">
         <%= will_paginate %>
-            <% @categories.each do |category| %>
-                <ul class="listing">
-                    <div class="row">
-                        <div class="well">
-                            <li class="title">
+        
+            <ul class="listing">
+                <% @categories.each do |category| %>
+                    <div class="well category-list">
+                        <li class="title">
                             <%= link_to "#{category.name}", category_path(category) %>
-                            </li>
-                            <li><small><%= pluralize(category.comments.count, "comment") %></small></li>
-                        </div>
+                            <span><%= pluralize(category.comments.count, "comment") %></span>
+                        </li>
                     </div>
-                </ul>
-            <% end %>
+                <% end %>
+            </ul>
+            
         <%= will_paginate %>
     </div>
     
